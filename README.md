@@ -1,3 +1,10 @@
+# Words from the candidate
+
+Thank you for the opportunity to give this project a try! :) I've included a screenshot here of what the final result looks like.
+
+<img src="https://github.com/alissaahodge/platform-ui-code-test/blob/master/proj.png">
+
+
 # Description
 
 Hi, and welcome to the team! As you know, we provide tools for searching for doctors and hospitals (i.e. "providers"). A new feature has been requested by the client. Here is the business story:
