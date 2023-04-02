@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-list',
@@ -29,8 +29,44 @@ export class ListComponent implements OnInit {
     }
   ];
 
-  constructor() {}
+  constructor() {
+  }
 
-  ngOnInit() {}
+  ngOnInit() {
+    const unselected = localStorage.getItem('unselectedProviders');
+    const selected = localStorage.getItem('selectedProviders');
+
+    if (unselected) {
+      this.unselectedProviders = JSON.parse(unselected);
+    }
+    if (selected) {
+      this.selectedProviders = JSON.parse(selected);
+    }
+  }
+
+  /**
+   * un selects a card, adding it back to unselected providers.
+   */
+  unSelectCard(providerCard) {
+    if (providerCard) {
+      this.unselectedProviders.push(providerCard);
+      this.selectedProviders = this.selectedProviders.filter(p => p.id !== providerCard.id);
+
+      localStorage.setItem('unselectedProviders', JSON.stringify(this.unselectedProviders));
+      localStorage.setItem('selectedProviders', JSON.stringify(this.selectedProviders));
+    }
+  }
+
+  /**
+   * selects a card, adding it back to selected providers.
+   */
+  selectCard(providerCard) {
+    if (providerCard) {
+      this.selectedProviders.push(providerCard);
+      this.unselectedProviders = this.unselectedProviders.filter(p => p.id !== providerCard.id);
+      localStorage.setItem('unselectedProviders', JSON.stringify(this.unselectedProviders));
+      localStorage.setItem('selectedProviders', JSON.stringify(this.selectedProviders));
+    }
+  }
 
 }

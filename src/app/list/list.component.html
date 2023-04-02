@@ -1,4 +1,55 @@
-<div class="list-container">
-  <h2>Providers</h2>
+<div class="content">
 
+  <img class="logo" src="https://www.zelis.com/wp-content/uploads/2021/08/zelis-logo-black.svg"/>
+  <br>
+
+  <!-- Selected Providers-->
+  <div class="list-container">
+    <h2>Unselected Providers</h2>
+
+    <div class="card-container" fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap="16px">
+      <div *ngFor="let sp of selectedProviders;">
+        <mat-card class="provider-card">
+          <mat-card-header>
+
+            <mat-card-title>{{sp.name}}</mat-card-title>
+            <mat-card-subtitle>{{sp.phone}}</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <p>{{sp.address}}</p>
+          </mat-card-content>
+          <mat-card-actions align="end">
+            <button mat-button class="custom-button" (click)="unSelectCard(sp)">x remove</button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+
+      <div *ngIf='!selectedProviders.length'>
+        <p>There are no selected providers at this time.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Unselected Providers -->
+  <div class="list-container">
+    <h2>Unselected Providers</h2>
+
+    <div class="card-container" fxLayoutAlign="center center" fxLayout="row wrap" fxLayoutGap="16px">
+      <div *ngFor="let up of unselectedProviders;">
+        <mat-card class="provider-card" (click)="selectCard(up)">
+          <mat-card-header>
+            <mat-card-title>{{up.name}}</mat-card-title>
+            <mat-card-subtitle>{{up.phone}}</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <p>{{up.address}}</p>
+          </mat-card-content>
+        </mat-card>
+      </div>
+
+      <div *ngIf='!unselectedProviders.length'>
+        <p>There are no providers to select at this time.</p>
+      </div>
+    </div>
+  </div>
 </div>
